@@ -1,11 +1,15 @@
 import streamlit as st
 import openai
+import os
 st.title('GPT-3 Demo')
 user_input = st.text_area('Text to analyze',"Sundar Pichai is the CEO of Google.")
 
 if st.button('Extract Entities') and user_input:
     st.write(user_input)
-    openai.api_key = "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"
+    # openai.api_key = "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"
+    openai.api_key = os.getenv("API_KEY")
+    print(os.getenv("API_KEY"))
+
 
     response = openai.Completion.create(
     model="text-davinci-002",
